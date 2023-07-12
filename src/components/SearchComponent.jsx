@@ -8,7 +8,7 @@ export const SearchComponent = () => {
       clearable
       underlined
       width="100%"
-      maxwidth="800px"
+      maxwidth="50rem"
       contentRight={<Image src={search} alt="search" />}
     ></Input>
   );

@@ -32,7 +32,7 @@ export const NavbarComponent = () => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          maxWidth: "1024px",
+          maxWidth: "64rem",
           margin: "0 auto",
         }}
       >
@@ -53,7 +53,7 @@ export const NavbarComponent = () => {
           variant="highlight-rounded"
           css={{
             width: "100%",
-            maxWidth: "800px",
+            maxWidth: "50rem",
           }}
         >
           <SearchComponent />
@@ -69,9 +69,9 @@ export const NavbarComponent = () => {
         showIn="xs"
         css={{
           width: "100%",
-          maxWidth: "320px",
+          maxWidth: "20rem",
           margin: "0 auto",
-          padding: "0",
+          padding: "0.3rem 0",
         }}
       >
         <SearchComponent />
