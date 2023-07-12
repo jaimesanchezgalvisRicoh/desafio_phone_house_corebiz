@@ -1,0 +1,6 @@
+@media (width < 768px) {
+  .nextui-c-egxOLa {
+    flex-direction: column;
+    height: fit-content;
+  }
+}
