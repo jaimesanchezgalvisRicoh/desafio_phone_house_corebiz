@@ -4,7 +4,7 @@ import search from "../assets/search.png";
 export const SearchComponent = () => {
   return (
     <Input
-      Placeholder="¿Que estas buscando?"
+      placeholder="¿Que estas buscando?"
       clearable
       underlined
       width="100%"

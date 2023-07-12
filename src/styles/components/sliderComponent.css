@@ -1,0 +1,14 @@
+.image-gallery-slides {
+  margin-top: 1rem;
+  max-width: 94rem;
+}
+
+.image-gallery-bullets .image-gallery-bullet.active {
+  background: #f8475f;
+  border: none;
+}
+
+.image-gallery-bullets .image-gallery-bullet {
+  background: #f2ebec;
+  border: none;
+}

@@ -2,6 +2,7 @@ import { Container } from "@nextui-org/react";
 import { NavbarComponent } from "../components/NavbarComponent";
 
 import "../styles/pages/home.css";
+import { Slider } from "../components/Slider";
 
 export const Home = () => {
   return (
@@ -10,7 +11,6 @@ export const Home = () => {
         display: "flex",
         justifyContent: "flex-start",
         alignItems: "center",
-        height: "100vh",
         flexDirection: "column",
         width: "100%",
         maxWidth: "100%",
@@ -19,6 +19,7 @@ export const Home = () => {
       }}
     >
       <NavbarComponent />
+      <Slider />
     </Container>
   );
 };
