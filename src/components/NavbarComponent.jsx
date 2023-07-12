@@ -70,7 +70,7 @@ export const NavbarComponent = () => {
         css={{
           width: "100%",
           maxWidth: "20rem",
-          margin: "0 auto",
+          margin: "1rem auto",
           padding: "0.3rem 0",
         }}
       >
