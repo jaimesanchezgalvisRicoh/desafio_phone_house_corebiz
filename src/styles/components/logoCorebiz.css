@@ -1,3 +1,9 @@
 .nextui-c-kbhVdb {
-max-height: 50px;
+  max-height: 3rem;
+}
+
+@media (width < 768px) {
+  .nextui-c-kbhVdb {
+    max-height: 2rem;
+  }
 }
