@@ -1,5 +1,5 @@
 import { Image, Input } from "@nextui-org/react";
-import search from "../assets/search.png";
+import search from "../assets/icons/search.png";
 
 export const SearchComponent = () => {
   return (

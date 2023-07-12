@@ -1,7 +1,6 @@
 import ImageGallery from "react-image-gallery";
-import sliderImagesfrom from "../data/sliderImages.json";
-
 import { useWindowSize } from "@react-hook/window-size/throttled";
+import sliderImagesfrom from "../data/sliderImages.json";
 
 import "react-image-gallery/styles/css/image-gallery.css";
 import "../styles/components/sliderComponent.css";
@@ -28,7 +27,7 @@ export const Slider = () => {
       showBullets={true}
       items={images}
       showPlayButton={false}
-      aria-label={images}
+      aria-label="Slider"
       showFullscreenButton={false}
       showNav={false}
     />

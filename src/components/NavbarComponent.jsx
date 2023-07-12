@@ -5,18 +5,7 @@ import cart from "../assets/icons/cart.png";
 import "../styles/components/navbarComponent.css";
 
 export const NavbarComponent = () => {
-  const collapseItems = [
-    "Mas vendidos",
-    "Dashboard",
-    "Activity",
-    "Analytics",
-    "System",
-    "Deployments",
-    "My Settings",
-    "Team Settings",
-    "Help & Feedback",
-    "Log Out",
-  ];
+  const collapseItems = ["Shoes", "Boots", "Sneakers", "Bags", "Belts"];
   return (
     <Navbar
       isBordered
@@ -78,15 +67,8 @@ export const NavbarComponent = () => {
       </Navbar.Content>
 
       <Navbar.Collapse>
-        {collapseItems.map((item, index) => (
-          <Navbar.CollapseItem
-            key={item}
-            activeColor="secondary"
-            css={{
-              color: index === collapseItems.length - 1 ? "$error" : "",
-            }}
-            isActive={index === 2}
-          >
+        {collapseItems.map((item) => (
+          <Navbar.CollapseItem key={item} activeColor="secondary">
             <Link
               color="inherit"
               css={{
