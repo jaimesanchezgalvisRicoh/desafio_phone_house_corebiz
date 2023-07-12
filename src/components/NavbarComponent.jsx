@@ -71,7 +71,7 @@ export const NavbarComponent = () => {
           width: "100%",
           maxWidth: "20rem",
           margin: "1rem auto",
-          padding: "0.3rem 0",
+          padding: "0",
         }}
       >
         <SearchComponent />
