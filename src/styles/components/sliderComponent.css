@@ -14,7 +14,7 @@
 }
 
 .nextui-c-fdHeMm-idQKhCv-css {
-  display: block;
+  /* display: block; */
 }
 
 .slick-dots li button {
@@ -33,11 +33,41 @@
 }
 
 .slick-slider {
-  padding: 1rem 1rem 2rem 1rem;
+  padding: 1rem 2rem 2rem 2rem;
   overflow-x: hidden;
   height: max-content;
 }
 
 .slick-dots {
   bottom: 0;
+}
+
+.slick-prev {
+  left: 0;
+}
+.slick-next {
+  right: 0;
+}
+
+.slick-arrow:before {
+  color: black;
+  font-weight: bold;
+  opacity: 1;
+  font-family: monospace;
+  font-size: 1.8rem;
+  text-shadow: 1px 1px 2px rgba(40, 39, 39, 0.3);
+}
+
+.slick-arrow:hover:before {
+  font-size: 2rem;
+  color: black;
+  transition: transform 0.3s ease;
+}
+
+.slick-prev:before {
+  content: "<";
+}
+
+.slick-next:before {
+  content: ">";
 }

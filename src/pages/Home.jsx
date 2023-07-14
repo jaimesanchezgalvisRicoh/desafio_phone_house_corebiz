@@ -1,4 +1,4 @@
-import { Container } from "@nextui-org/react";
+import { Container, Loading } from "@nextui-org/react";
 import { NavbarComponent } from "../components/NavbarComponent";
 
 import "../styles/pages/home.css";
@@ -8,14 +8,13 @@ import { Slider } from "../components/Slider";
 
 export const Home = () => {
   const { data, isLoading, error } = useProductData();
-  console.log(isLoading);
   console.log(error);
 
   return (
     <Container
       css={{
         display: "flex",
-        justifyContent: "flex-start",
+        justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
         width: "100%",
@@ -26,7 +25,7 @@ export const Home = () => {
     >
       <NavbarComponent />
       <Slider />
-      {data ? <ProductList products={data} /> : null}
+      {!isLoading ? data ? <ProductList products={data} /> : null : <Loading />}
     </Container>
   );
 };
