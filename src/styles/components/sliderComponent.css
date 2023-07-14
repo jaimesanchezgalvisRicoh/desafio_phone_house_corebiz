@@ -12,3 +12,32 @@
   background: #f2ebec;
   border: none;
 }
+
+.nextui-c-fdHeMm-idQKhCv-css {
+  display: block;
+}
+
+.slick-dots li button {
+}
+.slick-dots li button::before {
+  /* color: #f2ebec !important; */
+  font-size: 0.9rem !important;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #f8475f !important;
+}
+
+.nextui-c-kbhVdb {
+  max-height: 100%;
+}
+
+.slick-slider {
+  padding: 1rem 1rem 2rem 1rem;
+  overflow-x: hidden;
+  height: max-content;
+}
+
+.slick-dots {
+  bottom: 0;
+}

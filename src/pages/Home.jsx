@@ -2,9 +2,15 @@ import { Container } from "@nextui-org/react";
 import { NavbarComponent } from "../components/NavbarComponent";
 
 import "../styles/pages/home.css";
+import { ProductList } from "../components/ProductList";
+import { useProductData } from "../api/fetchProductData";
 import { Slider } from "../components/Slider";
 
 export const Home = () => {
+  const { data, isLoading, error } = useProductData();
+  console.log(isLoading);
+  console.log(error);
+
   return (
     <Container
       css={{
@@ -20,6 +26,7 @@ export const Home = () => {
     >
       <NavbarComponent />
       <Slider />
+      {data ? <ProductList products={data} /> : null}
     </Container>
   );
 };
