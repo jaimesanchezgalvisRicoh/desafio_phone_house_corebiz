@@ -69,7 +69,7 @@ export const ProductCard = ({ product }) => {
               padding: "0",
               margin: "0",
             }}
-            size={13}
+            size="$xs"
             color="#9d9696"
           >
             {productName}
