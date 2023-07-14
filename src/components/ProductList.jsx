@@ -27,6 +27,7 @@ export const ProductList = ({ products }) => {
         margin: "0 auto",
       }}
     >
+      <h2>Mas vendidos</h2>
       <Slider {...settings}>
         {/* eslint-disable-next-line react/prop-types */}
         {products.map((product) => (
