@@ -23,6 +23,7 @@ export const ProductCard = ({ product }) => {
           background: "#FAFAFC",
           margin: "0",
           padding: "0",
+          height: windowWidth > 768 ? "21rem" : "18rem",
         }}
       >
         <Card.Header
@@ -68,7 +69,7 @@ export const ProductCard = ({ product }) => {
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-evenly",
-            minHeight: "6.5rem",
+            height: "fit-content",
             width: "100%",
           }}
         >
@@ -85,7 +86,7 @@ export const ProductCard = ({ product }) => {
               css={{
                 color: "inherit",
                 textAlign: "center",
-                padding: "0",
+                padding: "0 0.5rem",
                 margin: "0",
               }}
               size={windowWidth > 768 ? 14 : 10}
@@ -147,6 +148,7 @@ export const ProductCard = ({ product }) => {
             css={{
               backgroundColor: "black",
               borderRadius: "0.2rem",
+              margin: "0.5rem auto",
             }}
           >
             COMPRAR
