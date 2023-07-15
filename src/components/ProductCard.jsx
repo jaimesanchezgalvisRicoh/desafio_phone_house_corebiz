@@ -17,6 +17,7 @@ export const ProductCard = ({ product }) => {
     <div className="cardContainer">
       <Card
         isHoverable
+        variant="bordered"
         css={{
           w: "100%",
           background: "#FAFAFC",
@@ -63,7 +64,7 @@ export const ProductCard = ({ product }) => {
             borderTop: "$borderWeights$light solid rgba(255, 255, 255, 0.2)",
             bottom: 0,
             zIndex: 1,
-            padding: "0",
+            padding: "0.5rem 0",
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-evenly",
@@ -145,7 +146,7 @@ export const ProductCard = ({ product }) => {
             css={{
               backgroundColor: "black",
               borderRadius: "0.2rem",
-              margin: "0.5rem auto 1rem auto",
+              // margin: "0.5rem auto 1rem auto",
             }}
           >
             COMPRAR
