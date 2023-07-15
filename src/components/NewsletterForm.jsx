@@ -1,9 +1,9 @@
 import { useState } from "react";
+import { useMutation } from "react-query";
 import { Button, Container, Input, Text } from "@nextui-org/react";
+import Swal from "sweetalert2";
 import { postNewsletterSubscription } from "../api/postNewsletterSubscription";
 import { useResponsiveLayout } from "../hooks/useResponsiveLayout";
-import { useMutation } from "react-query";
-import Swal from "sweetalert2";
 
 import "../styles/components/newsletterForm.css";
 
@@ -79,8 +79,7 @@ export const NewsletterForm = () => {
           bordered
           placeholder="Ingresa tu nombre"
           color="default"
-          css={{ width: "85%", margin: "0.5rem auto"
-         }}
+          css={{ width: "85%", margin: "0.5rem auto" }}
         />
         <Input
           aria-label="email"

@@ -1,6 +1,5 @@
 import ImageGallery from "react-image-gallery";
 import { useResponsiveLayout } from "../hooks/useResponsiveLayout.jsx";
-
 import sliderImagesfrom from "../data/sliderImages.json";
 
 import "react-image-gallery/styles/css/image-gallery.css";

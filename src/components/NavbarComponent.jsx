@@ -1,13 +1,14 @@
+import { useContext } from "react";
 import { Navbar, Link, Badge, Avatar } from "@nextui-org/react";
 import { SearchComponent } from "./SearchComponent";
 import { LogoCorebiz } from "./LogoCorebiz";
 import cart from "../assets/icons/cart.png";
-import "../styles/components/navbarComponent.css";
 import CartContext from "../context/CartContext";
-import { useContext } from "react";
+
+import "../styles/components/navbarComponent.css";
 
 export const NavbarComponent = () => {
-  const collapseItems = ["Shoes", "Boots", "Sneakers", "Bags", "Belts"];
+  const collapseItems = ["Shoes", "Boots", "Belts", "Bags"];
 
   const { cartItems, removeFromCart, clearCart } = useContext(CartContext);
 
@@ -19,7 +20,6 @@ export const NavbarComponent = () => {
       variant="sticky"
       color="white"
       disableBlur={true}
-      
       css={{
         width: "100%",
       }}

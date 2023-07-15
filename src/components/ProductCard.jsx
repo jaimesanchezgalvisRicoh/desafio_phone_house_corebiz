@@ -1,10 +1,10 @@
+import { useContext } from "react";
+import StarRatingComponent from "react-star-rating-component";
 import { Card, Col, Button, Text } from "@nextui-org/react";
 import useImageAvailability from "../hooks/useImageAvailability";
-import defaultImage from "../assets/defaultImage.png";
-import StarRatingComponent from "react-star-rating-component";
 import { useResponsiveLayout } from "../hooks/useResponsiveLayout.jsx";
+import { defaultImage } from "../assets/images.js";
 import CartContext from "../context/CartContext";
-import { useContext } from "react";
 
 // eslint-disable-next-line react/prop-types
 export const ProductCard = ({ product }) => {
@@ -164,33 +164,6 @@ export const ProductCard = ({ product }) => {
           >
             COMPRAR
           </Button>
-
-          {/* <Col>
-          <Row>
-            <Col>
-              <Text color="#000" size={12}>
-                Available soon.
-              </Text>
-              <Text color="#000" size={12}>
-                Get notified.
-              </Text>
-            </Col>
-            <Col>
-              <Row justify="flex-end">
-                <Button flat auto rounded color="secondary">
-                  <Text
-                    css={{ color: "inherit" }}
-                    size={12}
-                    weight="bold"
-                    transform="uppercase"
-                  >
-                    Notify Me
-                  </Text>
-                </Button>
-              </Row>
-            </Col>
-          </Row>
-        </Col> */}
         </Card.Footer>
       </Card>
     </div>

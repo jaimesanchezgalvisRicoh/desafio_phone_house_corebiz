@@ -1,8 +1,8 @@
 import { Button, Grid, Image, Text } from "@nextui-org/react";
-import { corebizBlack, vtexBlack, correo, contacto } from "../assets/index.js";
+import { corebizBlack, vtexBlack, correo, contacto } from "../assets/images.js";
+import { useResponsiveLayout } from "../hooks/useResponsiveLayout.jsx";
 
 import "../styles/components/footer.css";
-import { useResponsiveLayout } from "../hooks/useResponsiveLayout.jsx";
 
 export const Footer = () => {
   const windowWidth = useResponsiveLayout();
