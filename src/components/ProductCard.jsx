@@ -70,6 +70,7 @@ export const ProductCard = ({ product }) => {
             flexDirection: "column",
             justifyContent: "space-evenly",
             height: "fit-content",
+            minHeight: windowWidth > 768 ? "8rem" : "6.5rem",
             width: "100%",
           }}
         >
