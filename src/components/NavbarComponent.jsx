@@ -3,9 +3,16 @@ import { SearchComponent } from "./SearchComponent";
 import { LogoCorebiz } from "./LogoCorebiz";
 import cart from "../assets/icons/cart.png";
 import "../styles/components/navbarComponent.css";
+import CartContext from "../context/CartContext";
+import { useContext } from "react";
 
 export const NavbarComponent = () => {
   const collapseItems = ["Shoes", "Boots", "Sneakers", "Bags", "Belts"];
+
+  const { cartItems, removeFromCart, clearCart } = useContext(CartContext);
+
+  const totalCartItems = cartItems.length;
+
   return (
     <Navbar
       isBordered
@@ -48,7 +55,12 @@ export const NavbarComponent = () => {
           <SearchComponent />
         </Navbar.Content>
         <Navbar.Link>
-          <Badge color="error" content={5} shape="rectangle" size="sm">
+          <Badge
+            color="error"
+            content={totalCartItems}
+            shape="rectangle"
+            size="sm"
+          >
             <Avatar squared size="sm" src={cart} />
           </Badge>
         </Navbar.Link>

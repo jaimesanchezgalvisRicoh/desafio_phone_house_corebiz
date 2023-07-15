@@ -3,6 +3,8 @@ import useImageAvailability from "../hooks/useImageAvailability";
 import defaultImage from "../assets/defaultImage.png";
 import StarRatingComponent from "react-star-rating-component";
 import { useResponsiveLayout } from "../hooks/useResponsiveLayout.jsx";
+import CartContext from "../context/CartContext";
+import { useContext } from "react";
 
 // eslint-disable-next-line react/prop-types
 export const ProductCard = ({ product }) => {
@@ -12,6 +14,13 @@ export const ProductCard = ({ product }) => {
 
   const discount = Math.floor(((listPrice - price) / listPrice) * 100);
   const windowWidth = useResponsiveLayout();
+
+  const { addToCart } = useContext(CartContext);
+
+  const handleAddToCart = () => {
+    const item = { name, price };
+    addToCart(1);
+  };
 
   return (
     <div className="cardContainer">
@@ -146,6 +155,7 @@ export const ProductCard = ({ product }) => {
 
           <Button
             size={windowWidth > 768 ? "sm" : "xs"}
+            onPress={handleAddToCart}
             css={{
               backgroundColor: "black",
               borderRadius: "0.2rem",

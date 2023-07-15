@@ -9,6 +9,7 @@ export const Home = () => {
   const { data, isLoading, error } = useProductData();
   console.log(error);
 
+
   return (
     <Container
       css={{
