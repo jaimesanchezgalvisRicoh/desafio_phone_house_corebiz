@@ -1,10 +1,9 @@
 import { Container, Loading } from "@nextui-org/react";
 import { NavbarComponent } from "../components/NavbarComponent";
-
-import "../styles/pages/home.css";
 import { ProductList } from "../components/ProductList";
 import { useProductData } from "../api/fetchProductData";
 import { Slider } from "../components/Slider";
+import "../styles/pages/home.css";
 
 export const Home = () => {
   const { data, isLoading, error } = useProductData();

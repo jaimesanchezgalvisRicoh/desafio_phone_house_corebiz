@@ -33,7 +33,7 @@
 }
 
 .slick-slider {
-  padding: 1rem 2rem 2rem 2rem;
+  padding: 2rem 1rem;
   overflow-x: hidden;
   height: max-content;
 }
@@ -70,4 +70,14 @@
 
 .slick-next:before {
   content: ">";
+}
+
+.cardContainer {
+  padding: 0.5rem;
+}
+
+@media screen and (min-width: 768px) {
+  .slick-slider {
+    padding: 2rem;
+  }
 }

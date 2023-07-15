@@ -1,46 +1,62 @@
-import { Grid } from "@nextui-org/react";
-import { useWindowSize } from "@react-hook/window-size";
+import { Container, Text } from "@nextui-org/react";
 import Slider from "react-slick";
 import { ProductCard } from "./ProductCard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useResponsiveLayout } from "../hooks/useResponsiveLayout";
 
 // eslint-disable-next-line react/prop-types
 export const ProductList = ({ products }) => {
-  const [widthD] = useWindowSize();
-
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: widthD > 768 ? 4 : 2,
-    slidesToScroll: 1,
-    arrows: widthD > 768 ? true : false,
+    slidesToShow: 4,
+    slidesToScroll: 2,
+    responsive: [
+      {
+        breakpoint: 769,
+        settings: {
+          arrows: false,
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+    ],
   };
 
+  const windowWidth = useResponsiveLayout();
+
   return (
-    <Grid.Container
+    <Container
       justify="center"
       css={{
         width: "100%",
         maxWidth: "1024px",
         margin: "0 auto",
+        padding: "0",
       }}
     >
-      <h2>Mas vendidos</h2>
+      {(windowWidth > 769 && (
+        <Text
+          size={16}
+          weight="bold"
+          css={{
+            margin: "0.5rem",
+            padding: "1rem",
+            textDecoration: "underline",
+          }}
+        >
+          Más Vendidos
+        </Text>
+      )) ||
+        null}
       <Slider {...settings}>
         {/* eslint-disable-next-line react/prop-types */}
         {products.map((product) => (
-          <Grid
-            key={product.id}
-            css={{
-              padding: "0.5rem",
-            }}
-          >
-            <ProductCard key={product.id} product={product} />
-          </Grid>
+          <ProductCard key={product.id} product={product} />
         ))}
       </Slider>
-    </Grid.Container>
+    </Container>
   );
 };

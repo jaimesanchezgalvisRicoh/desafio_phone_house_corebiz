@@ -1,19 +1,22 @@
 import ImageGallery from "react-image-gallery";
-import { useWindowSize } from "@react-hook/window-size/throttled";
+import { useResponsiveLayout } from "../hooks/useResponsiveLayout.jsx";
+
 import sliderImagesfrom from "../data/sliderImages.json";
 
 import "react-image-gallery/styles/css/image-gallery.css";
 import "../styles/components/sliderComponent.css";
 
 export const Slider = () => {
-  const [widthD] = useWindowSize();
+  const windowWidth = useResponsiveLayout();
 
   const images = sliderImagesfrom.map((image) => {
     function getImageUrl(name) {
       return new URL(`../assets/slider/${name}.png`, import.meta.url).href;
     }
 
-    const imgURL = getImageUrl(widthD > 768 ? image.desktop : image.mobile);
+    const imgURL = getImageUrl(
+      windowWidth > 768 ? image.desktop : image.mobile
+    );
 
     return {
       original: imgURL,
