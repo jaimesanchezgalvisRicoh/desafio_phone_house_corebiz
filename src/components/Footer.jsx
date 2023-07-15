@@ -2,8 +2,10 @@ import { Button, Grid, Image, Text } from "@nextui-org/react";
 import { corebizBlack, vtexBlack, correo, contacto } from "../assets/index.js";
 
 import "../styles/components/footer.css";
+import { useResponsiveLayout } from "../hooks/useResponsiveLayout.jsx";
 
 export const Footer = () => {
+  const windowWidth = useResponsiveLayout();
   return (
     <Grid.Container
       gap={2}
@@ -58,7 +60,7 @@ export const Footer = () => {
             background: "white",
             color: "black",
             borderRadius: "0.3rem",
-            fontSize: "12px",
+            fontSize: windowWidth > 768 ? "12px" : "11px",
             fontWeight: "bold",
           }}
           icon={<Image src={correo} alt="Correo" width={30} height={30} />}
@@ -75,7 +77,7 @@ export const Footer = () => {
             background: "white",
             color: "black",
             borderRadius: "0.3rem",
-            fontSize: "12px",
+            fontSize: windowWidth > 768 ? "12px" : "11px",
             fontWeight: "bold",
           }}
           icon={<Image src={contacto} alt="contacto" width={30} height={30} />}
