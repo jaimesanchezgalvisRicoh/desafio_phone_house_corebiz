@@ -1,6 +1,4 @@
 export const postNewsletterSubscription = async (name, email) => {
- 
-
   const response = await fetch(
     "https://corebizchallenge-738fa69df9e3.herokuapp.com/api/v1/newsletter",
     {
