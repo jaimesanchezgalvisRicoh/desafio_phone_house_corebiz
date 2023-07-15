@@ -27,7 +27,6 @@ export const NewsletterForm = () => {
         size={windowWidth > 768 ? 18 : 18}
         weight="bold"
         transform="uppercase"
-        // color="white"
         css={{
           textAlign: "center",
           padding: "0.5rem 2rem",
@@ -43,7 +42,7 @@ export const NewsletterForm = () => {
           value={nombre}
           onChange={(event) => setNombre(event.target.value)}
           bordered
-          labelPlaceholder="Ingresa tu nombre"
+          placeholder="Ingresa tu nombre"
           color="default"
           css={{ width: "85%" }}
         />
@@ -53,7 +52,7 @@ export const NewsletterForm = () => {
           value={correo}
           onChange={(event) => setCorreo(event.target.value)}
           bordered
-          labelPlaceholder="Ingresa tu mail"
+          placeholder="Ingresa tu mail"
           color="default"
           css={{ width: "85%" }}
         />

@@ -20,7 +20,7 @@ export const Home = () => {
         flexDirection: "column",
         width: "100%",
         maxWidth: "100%",
-        padding: "1rem 0",
+        padding: "1rem 0 0 0",
         margin: "0 auto",
       }}
     >

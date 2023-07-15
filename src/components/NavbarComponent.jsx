@@ -17,6 +17,9 @@ export const NavbarComponent = () => {
     <Navbar
       isBordered
       variant="sticky"
+      color="white"
+      disableBlur={true}
+      
       css={{
         width: "100%",
       }}
