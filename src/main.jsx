@@ -6,9 +6,9 @@ import { CartProvider } from "./context/CartContext.jsx";
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <CartProvider >
-  <QueryClientProvider client={queryClient}>
-    <Home />
-  </QueryClientProvider>
+  <CartProvider>
+    <QueryClientProvider client={queryClient}>
+      <Home />
+    </QueryClientProvider>
   </CartProvider>
 );

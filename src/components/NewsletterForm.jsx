@@ -1,14 +1,49 @@
 import { useState } from "react";
 import { Button, Container, Input, Text } from "@nextui-org/react";
-import "../styles/components/newsletterForm.css";
+import { postNewsletterSubscription } from "../api/postNewsletterSubscription";
 import { useResponsiveLayout } from "../hooks/useResponsiveLayout";
+import { useMutation } from "react-query";
+import Swal from "sweetalert2";
+
+import "../styles/components/newsletterForm.css";
 
 export const NewsletterForm = () => {
-  const [nombre, setNombre] = useState("");
-  const [correo, setCorreo] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
 
-  const handleSubmit = (event) => {
+  const mutation = useMutation((formData) =>
+    postNewsletterSubscription(formData.name, formData.email)
+  );
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
+
+
+    if (!name) {
+      Swal.fire("¡Error!", "Ingresa tu nombre.", "error");
+      return;
+    }
+
+    if (!email) {
+      Swal.fire("¡Error!", "Ingresa tu correo.", "error");
+      return;
+    }
+
+    try {
+      await mutation.mutateAsync({ name, email });
+
+      Swal.fire(
+        "¡Suscripción exitosa!",
+        "Te has registrado correctamente",
+        "success"
+      );
+    } catch (error) {
+      console.error(error);
+      Swal.fire("¡Error!", "Hubo un error en la suscripción.", "error");
+    }
+
+    setName("");
+    setEmail("");
   };
 
   const windowWidth = useResponsiveLayout();
@@ -37,20 +72,22 @@ export const NewsletterForm = () => {
       </Text>
       <form onSubmit={handleSubmit}>
         <Input
+          aria-label="nombre"
           type="text"
-          id="nombre"
-          value={nombre}
-          onChange={(event) => setNombre(event.target.value)}
+          id="name"
+          value={name}
+          onChange={(event) => setName(event.target.value)}
           bordered
           placeholder="Ingresa tu nombre"
           color="default"
           css={{ width: "85%" }}
         />
         <Input
+          aria-label="email"
           type="email"
-          id="correo"
-          value={correo}
-          onChange={(event) => setCorreo(event.target.value)}
+          id="email"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
           bordered
           placeholder="Ingresa tu mail"
           color="default"
@@ -58,6 +95,7 @@ export const NewsletterForm = () => {
         />
 
         <Button
+          aria-label="suscribirme"
           type="submit"
           css={{
             width: "100%",

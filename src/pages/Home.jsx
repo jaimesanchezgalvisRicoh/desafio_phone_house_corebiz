@@ -9,10 +9,11 @@ import { Footer } from "../components/Footer";
 
 export const Home = () => {
   const { data, isLoading, error } = useProductData();
-  console.log(error);
+  console.log(error ? error.message : "");
 
   return (
     <Container
+      aria-label="home"
       css={{
         display: "flex",
         justifyContent: "center",

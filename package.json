@@ -18,7 +18,8 @@
     "react-query": "^3.39.3",
     "react-slick": "^0.29.0",
     "react-star-rating-component": "^1.4.1",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "sweetalert2": "^11.7.18"
   },
   "devDependencies": {
     "@types/react": "^18.2.14",
