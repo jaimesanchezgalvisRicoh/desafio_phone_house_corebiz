@@ -18,7 +18,6 @@ export const NewsletterForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-
     if (!name) {
       Swal.fire("¡Error!", "Ingresa tu nombre.", "error");
       return;
@@ -80,7 +79,8 @@ export const NewsletterForm = () => {
           bordered
           placeholder="Ingresa tu nombre"
           color="default"
-          css={{ width: "85%" }}
+          css={{ width: "85%", margin: "0.5rem auto"
+         }}
         />
         <Input
           aria-label="email"
@@ -91,7 +91,7 @@ export const NewsletterForm = () => {
           bordered
           placeholder="Ingresa tu mail"
           color="default"
-          css={{ width: "85%" }}
+          css={{ width: "85%", margin: "0.5rem auto" }}
         />
 
         <Button
