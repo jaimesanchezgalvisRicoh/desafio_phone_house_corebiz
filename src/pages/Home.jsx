@@ -4,11 +4,12 @@ import { ProductList } from "../components/ProductList";
 import { useProductData } from "../api/fetchProductData";
 import { Slider } from "../components/Slider";
 import "../styles/pages/home.css";
+import { NewsletterForm } from "../components/NewsletterForm";
+import { Footer } from "../components/Footer";
 
 export const Home = () => {
   const { data, isLoading, error } = useProductData();
   console.log(error);
-
 
   return (
     <Container
@@ -26,6 +27,8 @@ export const Home = () => {
       <NavbarComponent />
       <Slider />
       {!isLoading ? data ? <ProductList products={data} /> : null : <Loading />}
+      <NewsletterForm />
+      <Footer />
     </Container>
   );
 };

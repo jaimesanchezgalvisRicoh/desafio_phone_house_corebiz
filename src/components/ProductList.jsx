@@ -8,7 +8,6 @@ import { useResponsiveLayout } from "../hooks/useResponsiveLayout";
 // eslint-disable-next-line react/prop-types
 export const ProductList = ({ products }) => {
   const settings = {
-    dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 4,
@@ -17,6 +16,7 @@ export const ProductList = ({ products }) => {
       {
         breakpoint: 769,
         settings: {
+          dots: true,
           arrows: false,
           slidesToShow: 2,
           slidesToScroll: 2,
