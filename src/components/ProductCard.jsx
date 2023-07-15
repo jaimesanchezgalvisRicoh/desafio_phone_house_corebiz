@@ -9,7 +9,7 @@ import { useContext } from "react";
 // eslint-disable-next-line react/prop-types
 export const ProductCard = ({ product }) => {
   // eslint-disable-next-line react/prop-types
-  const { imageUrl, productName, stars, price, listPrice } = product;
+  const { imageUrl, productName, stars, price, listPrice, productId } = product;
   const isImageAvailable = useImageAvailability(imageUrl);
 
   const discount = Math.floor(((listPrice - price) / listPrice) * 100);
@@ -18,8 +18,8 @@ export const ProductCard = ({ product }) => {
   const { addToCart } = useContext(CartContext);
 
   const handleAddToCart = () => {
-    const item = { name, price };
-    addToCart(1);
+    const item = { productName, stars, price, listPrice, productId };
+    addToCart(item);
   };
 
   return (

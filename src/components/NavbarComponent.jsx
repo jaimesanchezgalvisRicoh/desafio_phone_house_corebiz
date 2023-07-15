@@ -11,7 +11,7 @@ export const NavbarComponent = () => {
 
   const { cartItems, removeFromCart, clearCart } = useContext(CartContext);
 
-  const totalCartItems = cartItems.length;
+  const totalCartItems = cartItems?.length;
 
   return (
     <Navbar
