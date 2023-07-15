@@ -68,7 +68,7 @@ export const ProductCard = ({ product }) => {
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-evenly",
-            minHeight: "8rem",
+            minHeight: "6.5rem",
             width: "100%",
           }}
         >
@@ -134,7 +134,8 @@ export const ProductCard = ({ product }) => {
                 margin: "0",
                 fontWeight: "bold",
               }}
-              size={16}
+              // size={16}
+              size={windowWidth > 768 ? 14 : 12}
               color="#9d9696"
             >
               {`por $${price}`}
@@ -146,7 +147,6 @@ export const ProductCard = ({ product }) => {
             css={{
               backgroundColor: "black",
               borderRadius: "0.2rem",
-              // margin: "0.5rem auto 1rem auto",
             }}
           >
             COMPRAR
