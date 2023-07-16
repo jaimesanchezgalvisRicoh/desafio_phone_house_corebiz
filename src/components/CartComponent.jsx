@@ -1,11 +1,4 @@
-import {
-  Modal,
-  Button,
-  Text,
-  Badge,
-  Avatar,
-  Card,
-} from "@nextui-org/react";
+import { Modal, Button, Text, Badge, Avatar, Card } from "@nextui-org/react";
 import { useContext, useState } from "react";
 import { ProductCardCart } from "./ProductCardCart";
 import cart from "../assets/icons/cart.png";
@@ -56,6 +49,9 @@ export const CartComponent = () => {
         aria-labelledby="cart-modal"
         open={visible}
         onClose={closeHandler}
+        css={{
+          position: "absolute",
+        }}
       >
         <Modal.Header>
           <Text id="modal-title" size={18}>
@@ -69,9 +65,9 @@ export const CartComponent = () => {
           }}
         />
         <Modal.Body>
-        {cartItems.map((product) => (
-          <ProductCardCart key={product.id} product={product} />
-        ))}
+          {cartItems.map((product) => (
+            <ProductCardCart key={product.id} product={product} />
+          ))}
         </Modal.Body>
         <Modal.Footer
           css={{
