@@ -11,6 +11,8 @@ export const NewsletterForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
+  const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+
   const mutation = useMutation((formData) =>
     postNewsletterSubscription(formData.name, formData.email)
   );
@@ -25,6 +27,10 @@ export const NewsletterForm = () => {
 
     if (!email) {
       Swal.fire("¡Error!", "Ingresa tu correo.", "error");
+      return;
+    }
+    if (!emailRegex.test(email)) {
+      Swal.fire("¡Error!", "Correo no válido.", "error");
       return;
     }
 
