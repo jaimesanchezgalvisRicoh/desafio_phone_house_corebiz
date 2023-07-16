@@ -1,9 +1,10 @@
 import { useContext } from "react";
-import { Card, Col, Button, Text, Row } from "@nextui-org/react";
+import { Card, Col, Button, Text, Row, Avatar } from "@nextui-org/react";
 import useImageAvailability from "../hooks/useImageAvailability";
 import { useResponsiveLayout } from "../hooks/useResponsiveLayout.jsx";
 import { defaultImage } from "../assets/images.js";
 import CartContext from "../context/CartContext";
+import trash from "../assets/icons/trash.png";
 
 // eslint-disable-next-line react/prop-types
 export const ProductCardCart = ({ product }) => {
@@ -121,20 +122,26 @@ export const ProductCardCart = ({ product }) => {
             </Col>
           </Row>
         </Card.Body>
-        {/* <Card.Footer
+        <Card.Footer
           css={{
-            bgBlur: "#ffffff66",
-            borderTop: "$borderWeights$light solid rgba(255, 255, 255, 0.2)",
-            bottom: 0,
-            zIndex: 1,
-            padding: "0.5rem 0",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-evenly",
-            height: "fit-content",
-            width: "100%",
+            padding: "0",
+
+            margin: "0",
           }}
-        ></Card.Footer> */}
+        >
+          <Button
+            auto
+            onPress={() => removeFromCart(productId)}
+            icon={<Avatar squared size="xs" src={trash} pointer />}
+            css={{
+              backgroundColor: "transparent",
+              borderRadius: "0",
+              margin: "0 1rem 0.2rem auto",
+              width: "1rem",
+              height: "1.3rem",
+            }}
+          />
+        </Card.Footer>
       </Card>
     </div>
   );

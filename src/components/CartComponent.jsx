@@ -8,7 +8,7 @@ import "../styles/components/cart.css";
 
 export const CartComponent = () => {
   const [visible, setVisible] = useState(false);
-  const { cartItems, removeFromCart, clearCart } = useContext(CartContext);
+  const { cartItems } = useContext(CartContext);
   const totalCartItems = cartItems?.length;
 
   const handler = () => setVisible(true);

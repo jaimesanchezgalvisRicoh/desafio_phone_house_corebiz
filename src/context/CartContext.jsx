@@ -14,13 +14,21 @@ export const CartProvider = ({ children }) => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
 
+  console.log("cartItems", cartItems);
+
   const addToCart = (item) => {
     setCartItems((prevItems) => [...prevItems, item]);
   };
 
   const removeFromCart = (itemId) => {
-    setCartItems((prevItems) => prevItems.filter((item) => item.id !== itemId));
+    const itemIndex = cartItems.findIndex((item) => item.productId === itemId);
+    if (itemIndex !== -1) {
+      const updatedCartItems = [...cartItems];
+      updatedCartItems.splice(itemIndex, 1);
+      setCartItems(updatedCartItems);
+    }
   };
+  
 
   const clearCart = () => {
     setCartItems([]);
