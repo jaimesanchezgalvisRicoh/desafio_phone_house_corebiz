@@ -19,7 +19,6 @@ export const CartComponent = () => {
   const handler = () => setVisible(true);
   const closeHandler = () => {
     setVisible(false);
-    console.log("closed");
   };
   return (
     <div>
@@ -48,7 +47,7 @@ export const CartComponent = () => {
 
       <Modal
         className="cart-modal"
-        animated:true
+        animated={true}
         closeButton
         aria-labelledby="cart-modal"
         open={visible}
@@ -74,7 +73,7 @@ export const CartComponent = () => {
           }}
         >
           {cartItems.map((product) => (
-            <ProductCardCart key={product.id} product={product} />
+            <ProductCardCart key={product.productId} product={product} />
           ))}
         </Modal.Body>
         <Modal.Footer

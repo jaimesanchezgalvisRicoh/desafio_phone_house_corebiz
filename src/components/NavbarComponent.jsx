@@ -1,19 +1,12 @@
-import { useContext } from "react";
-import { Navbar, Link, Badge, Avatar } from "@nextui-org/react";
+import { Navbar, Link } from "@nextui-org/react";
 import { SearchComponent } from "./SearchComponent";
 import { LogoCorebiz } from "./LogoCorebiz";
-import cart from "../assets/icons/cart.png";
-import CartContext from "../context/CartContext";
+import { CartComponent } from "./CartComponent";
 
 import "../styles/components/navbarComponent.css";
-import { CartComponent } from "./CartComponent";
 
 export const NavbarComponent = () => {
   const collapseItems = ["Shoes", "Boots", "Belts", "Bags"];
-
-  const { cartItems, removeFromCart, clearCart } = useContext(CartContext);
-
-  const totalCartItems = cartItems?.length;
 
   return (
     <Navbar
@@ -58,19 +51,8 @@ export const NavbarComponent = () => {
         >
           <SearchComponent />
         </Navbar.Content>
-        {/* <Navbar.Link> */}
-        {/* <Badge
-            color="error"
-            content={totalCartItems}
-            shape="rectangle"
-            size="sm"
-          >
-            <Avatar squared size="sm" src={cart} />
-          </Badge> */}
         <CartComponent />
-        {/* </Navbar.Link> */}
       </Navbar.Content>
-
       <Navbar.Content
         showIn="xs"
         css={{
@@ -82,7 +64,6 @@ export const NavbarComponent = () => {
       >
         <SearchComponent />
       </Navbar.Content>
-
       <Navbar.Collapse>
         {collapseItems.map((item) => (
           <Navbar.CollapseItem key={item} activeColor="secondary">

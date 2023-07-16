@@ -1,19 +1,13 @@
 import { useContext } from "react";
 import { Card, Col, Button, Text, Row, Avatar } from "@nextui-org/react";
-import useImageAvailability from "../hooks/useImageAvailability";
-import { useResponsiveLayout } from "../hooks/useResponsiveLayout.jsx";
-import { defaultImage } from "../assets/images.js";
 import CartContext from "../context/CartContext";
-import trash from "../assets/icons/trash.png";
+import { trash } from "../assets/images.js";
+import PropTypes from "prop-types";
+import { HeaderCardProducts } from "../helpers/HeaderCardProducts";
+import { ProductImage } from "../helpers/ProductImage";
 
-// eslint-disable-next-line react/prop-types
 export const ProductCardCart = ({ product }) => {
-  // eslint-disable-next-line react/prop-types
   const { imageUrl, productName, price, listPrice, productId } = product;
-  const isImageAvailable = useImageAvailability(imageUrl);
-
-  const discount = Math.floor(((listPrice - price) / listPrice) * 100);
-  const windowWidth = useResponsiveLayout();
 
   const {
     removeFromCart,
@@ -21,8 +15,6 @@ export const ProductCardCart = ({ product }) => {
     removeFromCartQuantity,
     getProductQuantity,
   } = useContext(CartContext);
-
-  console.log("getProductQuantity", getProductQuantity);
 
   return (
     <div className="cardContainerCart">
@@ -34,33 +26,9 @@ export const ProductCardCart = ({ product }) => {
           background: "#FAFAFC",
           margin: "0",
           padding: "0",
-          // height: windowWidth > 768 ? "21rem" : "18rem",
         }}
       >
-        {(discount > 0 && (
-          <Card.Header
-            css={{
-              padding: "0",
-              width: "fit-content",
-              margin: "0 0 0 auto",
-              backgroundColor: "#F8475F",
-              minHeight: windowWidth > 768 ? "2.5rem" : "1.5rem",
-            }}
-          >
-            <Col>
-              <Text
-                size={windowWidth > 768 ? 14 : 10}
-                weight="bold"
-                transform="uppercase"
-                color="white"
-                css={{ margin: "0.5rem" }}
-              >
-                {discount}% OFF
-              </Text>
-            </Col>
-          </Card.Header>
-        )) ||
-          null}
+        <HeaderCardProducts product={product} />
         <Card.Body css={{ p: "0.3rem" }}>
           <Row
             css={{
@@ -69,14 +37,7 @@ export const ProductCardCart = ({ product }) => {
               alignItems: "center",
             }}
           >
-            <Card.Image
-              src={isImageAvailable ? imageUrl : defaultImage}
-              width="100%"
-              height="100%"
-              objectFit="cover"
-              alt="Card example background"
-            />
-
+            <ProductImage imageUrl={imageUrl} />
             <Col
               css={{
                 display: "flex",
@@ -108,7 +69,6 @@ export const ProductCardCart = ({ product }) => {
                 <Button onPress={() => addToCartQuantity(productId)}>+</Button>
               </Button.Group>
             </Col>
-
             <Col>
               <Text
                 css={{
@@ -151,4 +111,14 @@ export const ProductCardCart = ({ product }) => {
       </Card>
     </div>
   );
+};
+
+ProductCardCart.propTypes = {
+  product: PropTypes.shape({
+    imageUrl: PropTypes.string,
+    productName: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    listPrice: PropTypes.number,
+    productId: PropTypes.number.isRequired,
+  }).isRequired,
 };

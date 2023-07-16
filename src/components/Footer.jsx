@@ -1,11 +1,10 @@
-import { Button, Grid, Image, Text } from "@nextui-org/react";
+import { Grid, Image, Text } from "@nextui-org/react";
 import { corebizBlack, vtexBlack, correo, contacto } from "../assets/images.js";
-import { useResponsiveLayout } from "../hooks/useResponsiveLayout.jsx";
+import { CustomButton } from "../helpers/CustomButton.jsx";
 
 import "../styles/components/footer.css";
 
 export const Footer = () => {
-  const windowWidth = useResponsiveLayout();
   return (
     <Grid.Container
       gap={2}
@@ -50,40 +49,8 @@ export const Footer = () => {
           gap: "1.5rem",
         }}
       >
-        <Button
-          type="submit"
-          size={"lg"}
-          css={{
-            width: "100%",
-            margin: "0 auto",
-            maxW: "83%",
-            background: "white",
-            color: "black",
-            borderRadius: "0.3rem",
-            fontSize: windowWidth > 768 ? "12px" : "11px",
-            fontWeight: "bold",
-          }}
-          icon={<Image src={correo} alt="Correo" width={30} height={30} />}
-        >
-          CONTÁCTANOS
-        </Button>
-        <Button
-          type="submit"
-          size={"lg"}
-          css={{
-            width: "100%",
-            margin: "0 auto",
-            maxW: "83%",
-            background: "white",
-            color: "black",
-            borderRadius: "0.3rem",
-            fontSize: windowWidth > 768 ? "12px" : "11px",
-            fontWeight: "bold",
-          }}
-          icon={<Image src={contacto} alt="contacto" width={30} height={30} />}
-        >
-          HABLA CON UN CONSULTOR
-        </Button>
+        <CustomButton icon={correo} label="CONTÁCTANOS" />
+        <CustomButton icon={contacto} label="HABLA CON UN CONSULTOR" />
       </Grid>
       <Grid
         xs={12}

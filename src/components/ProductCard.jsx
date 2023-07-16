@@ -1,18 +1,15 @@
 import { useContext } from "react";
 import StarRatingComponent from "react-star-rating-component";
 import { Card, Col, Button, Text } from "@nextui-org/react";
-import useImageAvailability from "../hooks/useImageAvailability";
 import { useResponsiveLayout } from "../hooks/useResponsiveLayout.jsx";
-import { defaultImage } from "../assets/images.js";
 import CartContext from "../context/CartContext";
+import PropTypes from "prop-types";
+import { HeaderCardProducts } from "../helpers/HeaderCardProducts";
+import { ProductImage } from "../helpers/ProductImage";
 
-// eslint-disable-next-line react/prop-types
 export const ProductCard = ({ product }) => {
-  // eslint-disable-next-line react/prop-types
   const { imageUrl, productName, stars, price, listPrice, productId } = product;
-  const isImageAvailable = useImageAvailability(imageUrl);
 
-  const discount = Math.floor(((listPrice - price) / listPrice) * 100);
   const windowWidth = useResponsiveLayout();
 
   const { addToCart } = useContext(CartContext);
@@ -35,38 +32,9 @@ export const ProductCard = ({ product }) => {
           height: windowWidth > 768 ? "21rem" : "18rem",
         }}
       >
-        <Card.Header
-          css={{
-            padding: "0",
-            width: "fit-content",
-            margin: "0 0 0 auto",
-            backgroundColor: "#F8475F",
-            minHeight: windowWidth > 768 ? "2.5rem" : "1.5rem",
-          }}
-        >
-          <Col>
-            {(discount > 0 && (
-              <Text
-                size={windowWidth > 768 ? 14 : 10}
-                weight="bold"
-                transform="uppercase"
-                color="white"
-                css={{ margin: "0.5rem" }}
-              >
-                {discount}% OFF
-              </Text>
-            )) ||
-              null}
-          </Col>
-        </Card.Header>
+        <HeaderCardProducts product={product} />
         <Card.Body css={{ p: 0 }}>
-          <Card.Image
-            src={isImageAvailable ? imageUrl : defaultImage}
-            width="100%"
-            height="100%"
-            objectFit="cover"
-            alt="Card example background"
-          />
+          <ProductImage imageUrl={imageUrl} />
         </Card.Body>
         <Card.Footer
           css={{
@@ -86,6 +54,7 @@ export const ProductCard = ({ product }) => {
           <Col
             css={{
               display: "flex",
+              flexDirection: "column",
               justifyContent: "center",
               alignItems: "center",
               padding: "0",
@@ -104,25 +73,13 @@ export const ProductCard = ({ product }) => {
             >
               {productName}
             </Text>
-          </Col>
-          <Col
-            css={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              padding: "0",
-            }}
-          >
             <StarRatingComponent
               name="rate2"
               editing={false}
               starCount={5}
               value={stars}
               starColor={"#F8475F"}
-              // emptyStarColor={"#FAFAFC"}
             />
-          </Col>
-          <Col>
             <Text
               css={{
                 color: "inherit",
@@ -136,8 +93,6 @@ export const ProductCard = ({ product }) => {
             >
               {listPrice}
             </Text>
-          </Col>
-          <Col>
             <Text
               css={{
                 color: "inherit",
@@ -145,14 +100,12 @@ export const ProductCard = ({ product }) => {
                 margin: "0",
                 fontWeight: "bold",
               }}
-              // size={16}
               size={windowWidth > 768 ? 14 : 12}
               color="#9d9696"
             >
               {`por $${price}`}
             </Text>
           </Col>
-
           <Button
             size={windowWidth > 768 ? "sm" : "xs"}
             onPress={handleAddToCart}
@@ -168,4 +121,15 @@ export const ProductCard = ({ product }) => {
       </Card>
     </div>
   );
+};
+
+ProductCard.propTypes = {
+  product: PropTypes.shape({
+    imageUrl: PropTypes?.string,
+    productName: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    listPrice: PropTypes?.number,
+    productId: PropTypes.number.isRequired,
+    stars: PropTypes.number.isRequired,
+  }).isRequired,
 };
