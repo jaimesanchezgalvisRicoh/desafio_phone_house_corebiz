@@ -44,8 +44,6 @@ export const CartComponent = () => {
       <Modal
         className="cart-modal"
         animated:true
-        scroll={true}
-        fullScreen={true}
         closeButton
         aria-labelledby="cart-modal"
         open={visible}
@@ -66,7 +64,9 @@ export const CartComponent = () => {
           }}
         />
         <Modal.Body
-        
+          css={{
+            maxHeight: "70vh",
+          }}
         >
           {cartItems.map((product) => (
             <ProductCardCart key={product.id} product={product} />
