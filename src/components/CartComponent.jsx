@@ -1,8 +1,5 @@
 import {
   Modal,
-  Input,
-  Row,
-  Checkbox,
   Button,
   Text,
   Badge,
