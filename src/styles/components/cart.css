@@ -1,0 +1,8 @@
+.cart-modal {
+  margin: 0 0 auto auto;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 20rem;
+  border: solid 1px
+}

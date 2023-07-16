@@ -6,6 +6,7 @@ import cart from "../assets/icons/cart.png";
 import CartContext from "../context/CartContext";
 
 import "../styles/components/navbarComponent.css";
+import { CartComponent } from "./CartComponent";
 
 export const NavbarComponent = () => {
   const collapseItems = ["Shoes", "Boots", "Belts", "Bags"];
@@ -57,16 +58,17 @@ export const NavbarComponent = () => {
         >
           <SearchComponent />
         </Navbar.Content>
-        <Navbar.Link>
-          <Badge
+        {/* <Navbar.Link> */}
+        {/* <Badge
             color="error"
             content={totalCartItems}
             shape="rectangle"
             size="sm"
           >
             <Avatar squared size="sm" src={cart} />
-          </Badge>
-        </Navbar.Link>
+          </Badge> */}
+        <CartComponent />
+        {/* </Navbar.Link> */}
       </Navbar.Content>
 
       <Navbar.Content
