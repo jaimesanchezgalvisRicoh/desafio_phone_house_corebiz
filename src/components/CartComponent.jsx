@@ -65,7 +65,7 @@ export const CartComponent = () => {
         />
         <Modal.Body
           css={{
-            maxHeight: "70vh",
+            maxHeight: "60vh",
           }}
         >
           {cartItems.map((product) => (
