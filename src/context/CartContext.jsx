@@ -17,7 +17,21 @@ export const CartProvider = ({ children }) => {
   console.log("cartItems", cartItems);
 
   const addToCart = (item) => {
-    setCartItems((prevItems) => [...prevItems, item]);
+    setCartItems((prevItems) => {
+      const itemIndex = prevItems.findIndex(
+        (cartItem) => cartItem.productId === item.productId
+      );
+      if (itemIndex !== -1) {
+        const updatedItems = [...prevItems];
+        updatedItems[itemIndex] = {
+          ...updatedItems[itemIndex],
+          quantity: updatedItems[itemIndex].quantity + 1,
+        };
+        return updatedItems;
+      } else {
+        return [...prevItems, { ...item, quantity: 1 }];
+      }
+    });
   };
 
   const removeFromCart = (itemId) => {
@@ -28,15 +42,57 @@ export const CartProvider = ({ children }) => {
       setCartItems(updatedCartItems);
     }
   };
-  
 
-  const clearCart = () => {
-    setCartItems([]);
+  const addToCartQuantity = (itemId) => {
+    setCartItems((prevItems) => {
+      const updatedCartItems = [...prevItems];
+      const itemIndex = updatedCartItems.findIndex(
+        (item) => item.productId === itemId
+      );
+      if (itemIndex !== -1) {
+        updatedCartItems[itemIndex] = {
+          ...updatedCartItems[itemIndex],
+          quantity: updatedCartItems[itemIndex].quantity + 1,
+        };
+      }
+      return updatedCartItems;
+    });
+  };
+
+  const removeFromCartQuantity = (itemId) => {
+    setCartItems((prevItems) => {
+      const updatedCartItems = [...prevItems];
+      const itemIndex = updatedCartItems.findIndex(
+        (item) => item.productId === itemId
+      );
+      if (itemIndex !== -1) {
+        updatedCartItems[itemIndex] = {
+          ...updatedCartItems[itemIndex],
+          quantity: updatedCartItems[itemIndex].quantity - 1,
+        };
+        if (updatedCartItems[itemIndex].quantity <= 0) {
+          updatedCartItems.splice(itemIndex, 1);
+        }
+      }
+      return updatedCartItems;
+    });
+  };
+
+  const getProductQuantity = (itemId) => {
+    const item = cartItems.find((item) => item.productId === itemId);
+    return item ? item.quantity : 0;
   };
 
   return (
     <CartContext.Provider
-      value={{ cartItems, addToCart, removeFromCart, clearCart }}
+      value={{
+        cartItems,
+        addToCart,
+        removeFromCart,
+        addToCartQuantity,
+        removeFromCartQuantity,
+        getProductQuantity,
+      }}
     >
       {children}
     </CartContext.Provider>

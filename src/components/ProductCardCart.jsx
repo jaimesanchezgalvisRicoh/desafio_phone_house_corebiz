@@ -15,10 +15,17 @@ export const ProductCardCart = ({ product }) => {
   const discount = Math.floor(((listPrice - price) / listPrice) * 100);
   const windowWidth = useResponsiveLayout();
 
-  const { cartItems, removeFromCart, clearCart } = useContext(CartContext);
+  const {
+    removeFromCart,
+    addToCartQuantity,
+    removeFromCartQuantity,
+    getProductQuantity,
+  } = useContext(CartContext);
+
+  console.log("getProductQuantity", getProductQuantity);
 
   return (
-    <div className="cardContainer">
+    <div className="cardContainerCart">
       <Card
         isHoverable
         variant="bordered"
@@ -54,7 +61,7 @@ export const ProductCardCart = ({ product }) => {
           </Card.Header>
         )) ||
           null}
-        <Card.Body css={{ p: 0 }}>
+        <Card.Body css={{ p: "0.3rem" }}>
           <Row
             css={{
               display: "flex",
@@ -74,6 +81,7 @@ export const ProductCardCart = ({ product }) => {
               css={{
                 display: "flex",
                 justifyContent: "center",
+                flexDirection: "column",
                 alignItems: "center",
                 padding: "0",
                 margin: "0",
@@ -86,11 +94,19 @@ export const ProductCardCart = ({ product }) => {
                   padding: "0 0.5rem",
                   margin: "0",
                 }}
-                size={windowWidth > 768 ? 14 : 10}
+                size={10}
                 color="#9d9696"
               >
                 {productName}
               </Text>
+
+              <Button.Group color="" bordered size="xs">
+                <Button onPress={() => removeFromCartQuantity(productId)}>
+                  -
+                </Button>
+                <Button>{getProductQuantity(productId)}</Button>
+                <Button onPress={() => addToCartQuantity(productId)}>+</Button>
+              </Button.Group>
             </Col>
 
             <Col>
@@ -102,7 +118,7 @@ export const ProductCardCart = ({ product }) => {
                   margin: "0.2rem",
                   textDecoration: "line-through",
                 }}
-                size={11}
+                size={12}
                 color="#9d9696"
               >
                 {listPrice}
@@ -114,34 +130,24 @@ export const ProductCardCart = ({ product }) => {
                   margin: "0",
                   fontWeight: "bold",
                 }}
-                size={windowWidth > 768 ? 14 : 12}
+                size={14}
                 color="#9d9696"
               >
                 {`por $${price}`}
               </Text>
+              <Button
+                auto
+                onPress={() => removeFromCart(productId)}
+                icon={<Avatar squared size="xs" src={trash} pointer />}
+                css={{
+                  backgroundColor: "transparent",
+                  borderRadius: "0",
+                  margin: "0 0.5rem auto auto",
+                }}
+              />
             </Col>
           </Row>
         </Card.Body>
-        <Card.Footer
-          css={{
-            padding: "0",
-
-            margin: "0",
-          }}
-        >
-          <Button
-            auto
-            onPress={() => removeFromCart(productId)}
-            icon={<Avatar squared size="xs" src={trash} pointer />}
-            css={{
-              backgroundColor: "transparent",
-              borderRadius: "0",
-              margin: "0 1rem 0.2rem auto",
-              width: "1rem",
-              height: "1.3rem",
-            }}
-          />
-        </Card.Footer>
       </Card>
     </div>
   );

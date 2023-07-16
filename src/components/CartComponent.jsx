@@ -9,7 +9,12 @@ import "../styles/components/cart.css";
 export const CartComponent = () => {
   const [visible, setVisible] = useState(false);
   const { cartItems } = useContext(CartContext);
-  const totalCartItems = cartItems?.length;
+
+  const getTotalQuantity = () => {
+    return cartItems.reduce((total, item) => total + item.quantity, 0);
+  };
+
+  const totalQuantity = getTotalQuantity();
 
   const handler = () => setVisible(true);
   const closeHandler = () => {
@@ -18,7 +23,7 @@ export const CartComponent = () => {
   };
   return (
     <div>
-      <Badge color="error" content={totalCartItems} shape="rectangle" size="sm">
+      <Badge color="error" content={totalQuantity} shape="rectangle" size="sm">
         <Button
           auto
           onPress={handler}

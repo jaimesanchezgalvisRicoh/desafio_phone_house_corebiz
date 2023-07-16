@@ -1,3 +1,6 @@
+.cardContainerCart {
+  gap: 1rem;
+}
 
 .cart-modal {
   top: 0;
