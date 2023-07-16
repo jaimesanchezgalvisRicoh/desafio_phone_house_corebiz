@@ -50,7 +50,7 @@ export const CartComponent = () => {
         open={visible}
         onClose={closeHandler}
         css={{
-          position: "absolute",
+          position: "fixed",
         }}
       >
         <Modal.Header>
